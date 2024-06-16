@@ -50,6 +50,7 @@ CONF_FIRST_WEEK = "first_week"
 CONF_START_DATE = "start_date"
 CONF_SENSORS = "sensors"
 CONF_DATE_FORMAT = "date_format"
+CONF_POINTS = "points"
 
 DEFAULT_NAME = DOMAIN
 DEFAULT_FIRST_MONTH = "jan"
