@@ -99,6 +99,14 @@ def general_schema_definition(
         optional(
             const.CONF_ICON_OVERDUE, handler.options, const.DEFAULT_ICON_OVERDUE
         ): selector.IconSelector(),
+        optional(const.CONF_POINTS, handler.options, 0): selector.NumberSelector(
+            selector.NumberSelectorConfig(
+                min=0,
+                max=100,
+                mode=selector.NumberSelectorMode.BOX,
+                step=1,
+            )
+        ),         
         optional(
             const.CONF_FORECAST_DATES, handler.options, const.DEFAULT_FORECAST_DATES
         ): selector.NumberSelector(
