@@ -42,6 +42,7 @@ class Chore(RestoreEntity):
         "_forecast_dates",
         "_overdue",
         "_overdue_days",
+        "_points",
         "_frequency",
         "_start_date",
         "_offset_dates",
@@ -97,6 +98,7 @@ class Chore(RestoreEntity):
         self._offset_dates: str = None
         self._add_dates: str = None
         self._remove_dates: str = None
+        self._points = config.get(const.CONF_POINTS, 0)
         try:
             self._start_date = helpers.to_date(config.get(const.CONF_START_DATE))
         except ValueError:
@@ -214,7 +216,12 @@ class Chore(RestoreEntity):
     def add_dates(self) -> str:
         """Return add_dates attribute."""
         return self._add_dates
-
+        
+    @property
+    def points(self) -> int:
+        """Return the points assigned to this chore."""
+        return self._points
+        
     @property
     def remove_dates(self) -> str:
         """Return remove_dates attribute."""
@@ -257,6 +264,7 @@ class Chore(RestoreEntity):
             const.ATTR_OFFSET_DATES: self.offset_dates,
             const.ATTR_ADD_DATES: self.add_dates,
             const.ATTR_REMOVE_DATES: self.remove_dates,
+            const.CONF_POINTS: self.points,
             ATTR_UNIT_OF_MEASUREMENT: self.native_unit_of_measurement,
             # Needed for translations to work
             ATTR_DEVICE_CLASS: self.DEVICE_CLASS,
